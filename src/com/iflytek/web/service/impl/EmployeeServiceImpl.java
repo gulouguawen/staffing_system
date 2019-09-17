@@ -3,15 +3,17 @@ package com.iflytek.web.service.impl;
 import com.iflytek.web.dao.EmployeeDao;
 import com.iflytek.web.pojo.Employee;
 import com.iflytek.web.service.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
-public class EmployeeServiceImpl implements EmployeeService {
-    @Autowired
-    private EmployeeDao employeeDao;
+@Component("employeeService")
+public class EmployeeServiceImpl extends EmployeeService {
+    private final EmployeeDao employeeDao;
+
+    public EmployeeServiceImpl(EmployeeDao employeeDao) {
+        this.employeeDao = employeeDao;
+    }
 
     @Override
     public int login(String username, String password) {
@@ -40,5 +42,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<Employee> queryAll() {
         return employeeDao.getEmployees();
+    }
+
+    @Override
+    public Employee query(Integer id) {
+        return employeeDao.query(id);
     }
 }

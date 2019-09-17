@@ -4,14 +4,17 @@ import com.iflytek.web.pojo.Employee;
 
 import java.util.List;
 
-public interface EmployeeService {
-    public int login(String username, String password);
 
-    public int add(Employee emp);
+public abstract class EmployeeService {
+    public abstract int login(String username, String password);
 
-    public int update(Employee emp);
+    public abstract int add(Employee emp);
 
-    public int del(Integer id);
+    public abstract int update(Employee emp);
 
-    public List<Employee> queryAll();
+    public abstract int del(Integer id);
+
+    public abstract List<Employee> queryAll();
+
+    public abstract Employee query(Integer id);
 }

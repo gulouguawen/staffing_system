@@ -23,7 +23,6 @@ public class SpringTest {
         String password = "123456";
         int rlt = employeeService.login(username, password);
         Assert.assertEquals(1, rlt);
-        System.out.println("test Login ok...");
     }
 
     @Test
@@ -44,8 +43,6 @@ public class SpringTest {
         List<Employee> list = employeeService.queryAll();
         Employee e = list.get(list.size() - 1);
         Assert.assertEquals(emp, e);
-
-        System.out.println("test Add ok...");
     }
 
     @Test
@@ -97,20 +94,19 @@ public class SpringTest {
         Assert.assertEquals(username, new_emp6.getUsername());
         Assert.assertEquals(password, new_emp6.getPassword());
         Assert.assertEquals(salary, new_emp6.getSalary());
-        System.out.println("Test update ok...");
     }
 
     @Test
     public void testDel() {
-        Integer id = 3; // 第3个 下标为2的那个用户   1-10
+        Integer id = 3;
         List<Employee> list = employeeService.queryAll();
         int size = list.size(); // 7
         System.out.println("testDel:size=" + size);
         Assert.assertEquals(11, size);
-        int rlt = employeeService.del(id); // 没有异常 删除也成功的 逻辑上没有错误
+        int rlt = employeeService.del(id);
         Assert.assertEquals(10, employeeService.queryAll().size());
-        Assert.assertEquals(1, rlt);// 验证代码有没有异常
-        // 验证结果
+        Assert.assertEquals(1, rlt);
+
         Assert.assertEquals(size - 1, list.size());
         boolean bool = true;
         for (Employee e : list) {
@@ -120,6 +116,5 @@ public class SpringTest {
             }
         }
         Assert.assertTrue(bool);
-        System.out.println("Test Del ok...");
     }
 }

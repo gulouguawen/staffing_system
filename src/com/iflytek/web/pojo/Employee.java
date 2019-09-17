@@ -33,6 +33,22 @@ public class Employee {
         this.name = name;
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -49,19 +65,9 @@ public class Employee {
         this.password = password;
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Double salary) {
-        this.salary = salary;
+    @Override
+    public String toString() {
+        return "Employee [id=" + id + ", empNo=" + empNo + ", name=" + name + ", username=" + username + ", password="
+                + password + ", age=" + age + ", salary=" + salary + "]";
     }
 }

@@ -1,11 +1,11 @@
 package com.iflytek.web.dao;
 
+import com.iflytek.web.pojo.Employee;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import com.iflytek.web.pojo.Employee;
-import org.springframework.stereotype.Component;
 
 @Component
 public class EmployeeDao {
@@ -16,12 +16,12 @@ public class EmployeeDao {
         for (int i = 0; i < 10; i++) {
             emp = new Employee();
             emp.setAge(23 + i);
-            emp.setEmpNo("emp" + Math.ceil(Math.random() * 10000));
-            emp.setId(i + 1);
+            emp.setEmpNo("emp" + (int) Math.ceil(Math.random() * 10000));
+            emp.setId(i + 1);  // 1 - 10
             emp.setName("emp" + i);
-            emp.setPassword("123456");
+            emp.setPassword("123456"); // 123456
             emp.setSalary(5000D);
-            emp.setUsername("user" + i);
+            emp.setUsername("user" + i);// user0-user9
             list.add(emp);
         }
     }
@@ -36,9 +36,19 @@ public class EmployeeDao {
         return null;
     }
 
+    public Employee query(Integer id) {
+        for (Employee emp : list) {
+            if (id.equals(emp.getId())) {
+                return emp;
+            }
+        }
+        return null;
+    }
+
     public int addEmployee(Employee emp) {
         int id = list.get(list.size() - 1).getId() + 1;
         emp.setId(id);
+        emp.setEmpNo("emp" + id + (int) Math.ceil(Math.random() * 10000));
         list.add(emp);
         return 1;
     }
